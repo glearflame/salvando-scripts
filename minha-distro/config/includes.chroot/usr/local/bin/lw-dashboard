@@ -1,0 +1,56 @@
+#!/bin/sh
+
+set -eu
+
+once=0
+[ "${1:-}" = "--once" ] && once=1
+session_marker="${XDG_RUNTIME_DIR:-/tmp}/lw-dashboard-opened"
+
+if [ "$once" -eq 1 ] && [ -e "$session_marker" ]; then
+    exit 0
+fi
+touch "$session_marker"
+
+kernel="$(uname -sr)"
+desktop="${XDG_CURRENT_DESKTOP:-XFCE}"
+ip_addr="$(hostname -I 2>/dev/null | awk '{print $1}')"
+[ -n "$ip_addr" ] || ip_addr="offline"
+
+text="\
+<span foreground='#33ff33' font='14'><b>LW Hacking OS Dashboard</b></span>\n\
+\n\
+<b>Sistema:</b> ${kernel}\n\
+<b>Desktop:</b> ${desktop}\n\
+<b>IP:</b> ${ip_addr}\n\
+<b>Workspace:</b> ${HOME}/Hacking\n\
+\n\
+Atalhos recomendados:\n\
+- lw update\n\
+- lw performance on\n\
+- lw scan-network\n\
+- lw tools\n\
+- lw info\n"
+
+while :; do
+    yad --center --width=720 --height=420 \
+        --title="LW Dashboard" \
+        --image="computer" \
+        --text="$text" \
+        --button="Instalador:10" \
+        --button="Terminal:20" \
+        --button="Atualizar:30" \
+        --button="Performance:40" \
+        --button="Toolbox:50" \
+        --button="Guia:60" \
+        --button="Fechar:0"
+    rc=$?
+    case "$rc" in
+        10) /usr/local/bin/lw-open-installer >/dev/null 2>&1 & ;;
+        20) xfce4-terminal >/dev/null 2>&1 & ;;
+        30) xfce4-terminal --title="LW Update" --command "sh -lc 'sudo lw update; exec \$SHELL'" >/dev/null 2>&1 & ;;
+        40) xfce4-terminal --title="LW Performance" --command "sh -lc 'sudo lw performance on; exec \$SHELL'" >/dev/null 2>&1 & ;;
+        50) xfce4-terminal --title="LW Tools" --command "sh -lc 'lw tools; exec \$SHELL'" >/dev/null 2>&1 & ;;
+        60) /usr/local/bin/lw-open-guide >/dev/null 2>&1 & ;;
+        *) exit 0 ;;
+    esac
+done

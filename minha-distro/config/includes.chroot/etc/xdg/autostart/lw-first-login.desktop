@@ -1,0 +1,8 @@
+[Desktop Entry]
+Type=Application
+Name=LW First Login
+Comment=Apply the LW hacker theme and first-login defaults
+Exec=/usr/local/bin/lw-first-login
+OnlyShowIn=XFCE;
+X-GNOME-Autostart-enabled=true
+NoDisplay=true

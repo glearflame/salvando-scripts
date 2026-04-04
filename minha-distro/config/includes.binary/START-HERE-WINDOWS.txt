@@ -1,0 +1,34 @@
+LW HACKING OS - GUIA RAPIDO PARA WINDOWS
+========================================
+
+A forma mais facil de colocar esta ISO em um pendrive pelo Windows e:
+
+Opcao 1: Rufus
+https://rufus.ie/
+
+Opcao 2: balenaEtcher
+https://etcher.balena.io/
+
+Opcao 3: Ventoy
+https://www.ventoy.net/en/index.html
+
+Hardware recomendado:
+- Pendrive de 16 GB ou maior
+- 30 GB ou mais livres no disco para instalar
+- Backup dos seus arquivos importantes antes de mexer em particoes
+
+Passo a passo no Windows:
+1. Baixe a ISO.
+2. Conecte o pendrive.
+3. Abra o Rufus, o Etcher ou o Ventoy.
+4. Selecione esta ISO.
+5. Selecione o pendrive.
+6. Inicie a gravacao e espere terminar.
+7. Reinicie o PC e escolha o pendrive no menu de boot.
+8. Na sessao live, clique em "Instalar LW Hacking OS".
+
+Observacoes:
+- O Ventoy e uma otima opcao se voce guarda varias ISOs no mesmo pendrive.
+- O Ventoy tambem lida muito bem com ISOs maiores que 4 GB.
+- A instalacao vai apagar as particoes que voce escolher, entao confira o disco selecionado com calma.
+- Se quiser dual boot com Windows, reduza a particao do Windows antes ou escolha espaco livre durante a instalacao.

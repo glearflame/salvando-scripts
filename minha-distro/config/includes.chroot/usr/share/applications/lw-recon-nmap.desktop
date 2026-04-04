@@ -1,0 +1,8 @@
+[Desktop Entry]
+Type=Application
+Name=Nmap
+Comment=Network scanner and host discovery
+Exec=/usr/local/bin/lw-cli-tool "Nmap" "nmap --help"
+Icon=system-search
+Categories=X-LW-Recon;Utility;
+Terminal=false

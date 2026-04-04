@@ -1,0 +1,8 @@
+[Desktop Entry]
+Type=Application
+Name=LW Dashboard
+Comment=Open the LW dashboard on login
+Exec=/usr/local/bin/lw-dashboard --once
+OnlyShowIn=XFCE;
+X-GNOME-Autostart-enabled=true
+NoDisplay=true

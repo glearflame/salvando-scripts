@@ -1,0 +1,20 @@
+#!/bin/sh
+
+[ -d /run/live ] || exit 0
+
+marker="${XDG_RUNTIME_DIR:-/tmp}/lw-live-welcome-shown"
+[ -e "$marker" ] && exit 0
+touch "$marker"
+
+if ! command -v zenity >/dev/null 2>&1; then
+    exit 0
+fi
+
+if zenity --question \
+    --title="LW Hacking OS" \
+    --width=560 \
+    --ok-label="Instalar agora" \
+    --cancel-label="Depois" \
+    --text="LW Hacking OS esta pronto.\n\nPassos rapidos:\n1. Conecte no Wi-Fi ou cabo se quiser atualizar depois da instalacao.\n2. Clique em Instalar agora para abrir o instalador grafico.\n3. Escolha o disco com cuidado se voce ainda tiver Windows em outra particao.\n4. Reinicie e remova o pendrive quando a instalacao terminar.\n\nDica para usuarios de Windows: a raiz da ISO inclui o arquivo START-HERE-WINDOWS.txt com o passo a passo para gravar o pendrive."; then
+    /usr/local/bin/lw-open-installer >/dev/null 2>&1 &
+fi

@@ -1,0 +1,58 @@
+#!/bin/sh
+
+set -eu
+
+identity="/usr/share/lw/identity.env"
+[ -r "$identity" ] && . "$identity"
+
+conf="/etc/lightdm/lightdm.conf.d/60-lw-autologin.conf"
+default_user="${LW_DEFAULT_USER:-lonewys}"
+action="${1:-status}"
+
+need_root() {
+    if [ "$(id -u)" -ne 0 ]; then
+        exec sudo "$0" "$@"
+    fi
+}
+
+write_conf() {
+    user="$1"
+    mkdir -p "$(dirname "$conf")"
+    cat > "$conf" <<EOF
+[Seat:*]
+autologin-user=$user
+autologin-user-timeout=0
+autologin-session=xfce
+EOF
+}
+
+case "$action" in
+    status)
+        if [ -f "$conf" ]; then
+            user="$(sed -n 's/^autologin-user=//p' "$conf" | head -n1)"
+            printf 'Autologin enabled for: %s\n' "${user:-$default_user}"
+        else
+            printf 'Autologin disabled\n'
+        fi
+        ;;
+    enable)
+        user="${2:-$default_user}"
+        need_root "$@"
+        write_conf "$user"
+        printf 'Autologin enabled for: %s\n' "$user"
+        ;;
+    disable)
+        need_root "$@"
+        rm -f "$conf"
+        printf 'Autologin disabled\n'
+        ;;
+    help|-h|--help)
+        cat <<'EOF'
+Usage: lw-autologin [status|enable [user]|disable]
+EOF
+        ;;
+    *)
+        printf 'Unknown action: %s\n' "$action" >&2
+        exit 1
+        ;;
+esac

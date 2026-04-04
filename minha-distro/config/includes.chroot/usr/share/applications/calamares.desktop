@@ -1,0 +1,10 @@
+[Desktop Entry]
+Name=Instalar LW Hacking OS
+Comment=Instalador grafico recomendado para a maioria dos usuarios
+Exec=/usr/local/bin/lw-open-installer
+Icon=calamares
+Type=Application
+Categories=System;
+Keywords=install;installer;setup;disk;partition;
+StartupNotify=true
+Terminal=false

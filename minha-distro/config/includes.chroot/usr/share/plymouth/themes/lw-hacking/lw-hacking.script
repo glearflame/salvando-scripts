@@ -1,0 +1,31 @@
+Window.SetBackgroundTopColor(0.0, 0.02, 0.0);
+Window.SetBackgroundBottomColor(0.0, 0.0, 0.0);
+
+fun center_x(image) {
+    return Window.GetX() + Window.GetWidth() / 2 - image.GetWidth() / 2;
+}
+
+fun center_y(image) {
+    return Window.GetY() + Window.GetHeight() / 2 - image.GetHeight() / 2;
+}
+
+title_image = Image.Text("LW Hacking OS", 0.20, 1.0, 0.20);
+title_sprite = Sprite(title_image);
+title_sprite.SetX(center_x(title_image));
+title_sprite.SetY(center_y(title_image) - 30);
+
+subtitle_image = Image.Text("Booting secure green matrix ...", 0.10, 0.70, 0.10);
+subtitle_sprite = Sprite(subtitle_image);
+subtitle_sprite.SetX(center_x(subtitle_image));
+subtitle_sprite.SetY(center_y(subtitle_image) + 8);
+
+message_sprite = Sprite();
+
+fun message_callback(text) {
+    message_image = Image.Text(text, 0.15, 1.0, 0.15);
+    message_sprite.SetImage(message_image);
+    message_sprite.SetX(center_x(message_image));
+    message_sprite.SetY(center_y(message_image) + 34);
+}
+
+Plymouth.SetMessageFunction(message_callback);

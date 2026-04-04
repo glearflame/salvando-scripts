@@ -1,0 +1,8 @@
+[Desktop Entry]
+Type=Application
+Name=Guia LW
+Comment=Guia rapido com apps e atalhos importantes
+Exec=/usr/local/bin/lw-open-guide
+Icon=help-browser
+Categories=Utility;
+Terminal=false

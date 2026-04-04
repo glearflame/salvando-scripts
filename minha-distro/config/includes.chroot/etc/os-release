@@ -1,0 +1,9 @@
+NAME="LW Hacking OS"
+VERSION="1.0"
+VERSION_ID="1.0"
+PRETTY_NAME="LW Hacking OS 1.0"
+ID=lw-hacking
+ID_LIKE=debian
+HOME_URL="https://lw-hacking.local"
+SUPPORT_URL="https://lw-hacking.local/support"
+BUG_REPORT_URL="https://lw-hacking.local/issues"

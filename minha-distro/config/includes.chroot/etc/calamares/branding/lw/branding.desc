@@ -1,0 +1,25 @@
+---
+componentName: branding
+welcomeExpandingLogo: true
+windowExpanding: true
+windowPlacement: center
+strings:
+  productName: "LW Hacking OS"
+  shortProductName: "LW"
+  version: "1.0"
+  shortVersion: "1.0"
+  versionedName: "LW Hacking OS 1.0"
+  shortVersionedName: "LW 1.0"
+  bootloaderEntryName: "LW Hacking OS"
+  productUrl: "https://lw-hacking.local"
+  supportUrl: "https://lw-hacking.local/support"
+  knownIssuesUrl: "https://lw-hacking.local/issues"
+images:
+  productLogo: "lw-logo.xpm"
+  productIcon: "lw-logo.xpm"
+style:
+  sidebarBackground: "#020402"
+  sidebarText: "#90ff5a"
+  sidebarTextSelect: "#000000"
+  sidebarTextHighlight: "#33ff33"
+  accent: "#33ff33"

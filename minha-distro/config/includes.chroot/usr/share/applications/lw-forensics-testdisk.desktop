@@ -1,0 +1,8 @@
+[Desktop Entry]
+Type=Application
+Name=TestDisk
+Comment=Partition recovery toolkit
+Exec=/usr/local/bin/lw-cli-tool "TestDisk" "testdisk"
+Icon=drive-harddisk
+Categories=X-LW-Forensics;Utility;
+Terminal=false

@@ -1,0 +1,8 @@
+[Desktop Entry]
+Type=Application
+Name=DIRB
+Comment=Web content discovery
+Exec=/usr/local/bin/lw-cli-tool "DIRB" "dirb"
+Icon=applications-internet
+Categories=X-LW-Recon;Utility;
+Terminal=false

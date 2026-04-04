@@ -1,0 +1,8 @@
+[Desktop Entry]
+Type=Application
+Name=Wireshark
+Comment=Packet capture and network analysis
+Exec=wireshark
+Icon=wireshark
+Categories=X-LW-Network;Network;
+Terminal=false

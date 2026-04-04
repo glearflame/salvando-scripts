@@ -1,0 +1,8 @@
+[Desktop Entry]
+Type=Application
+Name=Foremost
+Comment=File carving utility
+Exec=/usr/local/bin/lw-cli-tool "Foremost" "foremost -h"
+Icon=drive-harddisk
+Categories=X-LW-Forensics;Utility;
+Terminal=false

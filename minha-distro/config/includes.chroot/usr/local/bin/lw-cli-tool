@@ -1,0 +1,12 @@
+#!/bin/sh
+
+set -eu
+
+title="${1:-LW Tool}"
+shift || true
+cmd="${1:-bash}"
+
+export LW_TOOL_TITLE="$title"
+export LW_TOOL_CMD="$cmd"
+
+exec xfce4-terminal --title="$title" --hold --working-directory="$HOME" --command /usr/local/bin/lw-cli-runner

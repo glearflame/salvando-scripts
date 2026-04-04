@@ -1,0 +1,36 @@
+#!/bin/sh
+
+set -eu
+
+for file in \
+    /usr/local/bin/lw \
+    /usr/local/bin/lw-* \
+    /etc/skel/Desktop/*.desktop
+do
+    if [ -e "$file" ]; then
+        chmod 755 "$file" || true
+    fi
+done
+
+if [ -f /etc/calamares/settings.conf ]; then
+    sed -i 's/^branding: .*/branding: lw/' /etc/calamares/settings.conf || true
+fi
+
+if command -v plymouth-set-default-theme >/dev/null 2>&1; then
+    plymouth-set-default-theme lw-hacking || true
+fi
+
+for service in \
+    NetworkManager \
+    ModemManager \
+    bluetooth \
+    cups \
+    irqbalance \
+    power-profiles-daemon \
+    zramswap \
+    lw-hardware-detect
+do
+    if [ -f "/etc/systemd/system/${service}.service" ] || [ -f "/lib/systemd/system/${service}.service" ] || [ -f "/usr/lib/systemd/system/${service}.service" ]; then
+        systemctl enable "${service}.service" >/dev/null 2>&1 || true
+    fi
+done

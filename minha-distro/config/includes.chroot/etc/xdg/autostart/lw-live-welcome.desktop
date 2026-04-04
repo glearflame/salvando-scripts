@@ -1,0 +1,8 @@
+[Desktop Entry]
+Type=Application
+Name=LW Hacking Welcome
+Comment=Show the quick installer prompt on live boot
+Exec=/usr/local/bin/lw-live-welcome
+OnlyShowIn=XFCE;
+X-GNOME-Autostart-enabled=true
+NoDisplay=true

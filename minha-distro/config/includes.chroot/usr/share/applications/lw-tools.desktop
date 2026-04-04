@@ -1,0 +1,8 @@
+[Desktop Entry]
+Type=Application
+Name=LW Toolbox
+Comment=Toolbox central com utilitarios LW
+Exec=/usr/local/bin/lw-open-tools
+Icon=utilities-terminal
+Categories=Utility;
+Terminal=false

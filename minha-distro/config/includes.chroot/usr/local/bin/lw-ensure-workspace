@@ -1,0 +1,11 @@
+#!/bin/sh
+
+set -eu
+
+mkdir -p \
+    "${HOME}/Hacking/Recon" \
+    "${HOME}/Hacking/Exploits" \
+    "${HOME}/Hacking/Reports" \
+    "${HOME}/Hacking/Wordlists" \
+    "${HOME}/.local/state/lw" \
+    "${HOME}/.config/lw"

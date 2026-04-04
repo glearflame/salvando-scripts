@@ -1,0 +1,9 @@
+#!/bin/sh
+
+set +e
+
+printf '\033[1;32m== %s ==\033[0m\n\n' "${LW_TOOL_TITLE:-LW Tool}"
+sh -lc "${LW_TOOL_CMD:-bash}"
+status=$?
+printf '\n\033[0;32mCommand finished with status %s. Interactive shell opened below.\033[0m\n' "$status"
+exec "${SHELL:-/bin/bash}"

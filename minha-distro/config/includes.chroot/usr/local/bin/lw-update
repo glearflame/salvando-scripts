@@ -1,0 +1,28 @@
+#!/bin/sh
+
+set -eu
+
+if [ "$(id -u)" -ne 0 ]; then
+    exec sudo "$0" "$@"
+fi
+
+printf '\033[1;32m[+] Updating APT packages\033[0m\n'
+apt-get update
+apt-get full-upgrade -y
+
+printf '\033[1;32m[+] Cleaning packages and caches\033[0m\n'
+apt-get autoremove -y
+apt-get autoclean -y
+apt-get clean
+
+if command -v flatpak >/dev/null 2>&1; then
+    printf '\033[1;32m[+] Updating Flatpak apps\033[0m\n'
+    flatpak update -y || true
+fi
+
+if command -v journalctl >/dev/null 2>&1; then
+    printf '\033[1;32m[+] Vacuuming old journals\033[0m\n'
+    journalctl --vacuum-time=7d >/dev/null 2>&1 || true
+fi
+
+printf '\033[1;32m[+] LW update complete\033[0m\n'

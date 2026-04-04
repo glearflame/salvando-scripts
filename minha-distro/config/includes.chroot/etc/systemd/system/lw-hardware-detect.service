@@ -1,0 +1,12 @@
+[Unit]
+Description=LW Hardware Detection
+After=network-online.target
+Wants=network-online.target
+ConditionPathExists=!/var/lib/lw/hardware-detect.done
+
+[Service]
+Type=oneshot
+ExecStart=/usr/local/bin/lw-hardware-detect --auto
+
+[Install]
+WantedBy=multi-user.target

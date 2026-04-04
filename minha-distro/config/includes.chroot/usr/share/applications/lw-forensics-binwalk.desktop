@@ -1,0 +1,8 @@
+[Desktop Entry]
+Type=Application
+Name=Binwalk
+Comment=Firmware and binary analysis
+Exec=/usr/local/bin/lw-cli-tool "Binwalk" "binwalk --help"
+Icon=drive-harddisk
+Categories=X-LW-Forensics;Utility;
+Terminal=false

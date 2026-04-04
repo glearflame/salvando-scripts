@@ -1,0 +1,8 @@
+[Desktop Entry]
+Type=Application
+Name=LW Dashboard
+Comment=Painel inicial da distro
+Exec=/usr/local/bin/lw-dashboard
+Icon=computer
+Categories=Utility;
+Terminal=false

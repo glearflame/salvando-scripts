@@ -1,0 +1,9 @@
+#!/bin/sh
+
+guide="/usr/share/lw/primeiros-passos.txt"
+
+if command -v xdg-open >/dev/null 2>&1; then
+    exec xdg-open "$guide"
+fi
+
+exec mousepad "$guide"

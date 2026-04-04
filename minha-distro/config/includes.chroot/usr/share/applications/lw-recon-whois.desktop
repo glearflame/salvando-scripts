@@ -1,0 +1,8 @@
+[Desktop Entry]
+Type=Application
+Name=Whois and DNS
+Comment=Quick terminal for whois and dig usage
+Exec=/usr/local/bin/lw-cli-tool "Whois and DNS" "whois"
+Icon=network-wired
+Categories=X-LW-Recon;Utility;
+Terminal=false

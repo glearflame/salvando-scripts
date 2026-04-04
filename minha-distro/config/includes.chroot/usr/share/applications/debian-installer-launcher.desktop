@@ -1,0 +1,9 @@
+[Desktop Entry]
+Name=Instalador Debian Avancado
+Comment=Instalador alternativo para fluxos manuais ou avancados
+Exec=/usr/sbin/debian-installer-launcher
+Icon=debian-installer-launcher
+Type=Application
+Categories=System;
+Terminal=false
+NoDisplay=true

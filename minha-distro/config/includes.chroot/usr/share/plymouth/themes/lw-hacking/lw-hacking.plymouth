@@ -1,0 +1,8 @@
+[Plymouth Theme]
+Name=LW Hacking OS
+Description=Green on black boot theme for LW Hacking OS
+ModuleName=script
+
+[script]
+ImageDir=/usr/share/plymouth/themes/lw-hacking
+ScriptFile=/usr/share/plymouth/themes/lw-hacking/lw-hacking.script

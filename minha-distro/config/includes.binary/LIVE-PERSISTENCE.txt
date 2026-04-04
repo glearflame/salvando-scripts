@@ -1,0 +1,21 @@
+LW LIVE PERSISTENCE
+===================
+
+To keep changes on the USB drive, create a second partition after writing the ISO.
+
+Recommended steps:
+1. Write the ISO to the USB drive.
+2. Create a second ext4 partition in the remaining free space.
+3. Set the partition label to:
+   LW-PERSISTENCE
+4. Create a file named:
+   persistence.conf
+5. Put this content inside it:
+   / union
+
+Then boot using the menu entry:
+  Modo Live Persistente (USB)
+
+Notes:
+- Persistence works best on real USB installs, not on DVD media.
+- Keep free space on the persistence partition for updates and settings.

@@ -1,0 +1,41 @@
+<!DOCTYPE Menu PUBLIC "-//freedesktop//DTD Menu 1.0//EN"
+  "http://www.freedesktop.org/standards/menu-spec/menu-1.0.dtd">
+<Menu>
+  <Name>Applications</Name>
+  <Menu>
+    <Name>LW-Hacking</Name>
+    <Directory>lw-hacking.directory</Directory>
+
+    <Menu>
+      <Name>Recon</Name>
+      <Directory>lw-recon.directory</Directory>
+      <Include>
+        <Category>X-LW-Recon</Category>
+      </Include>
+    </Menu>
+
+    <Menu>
+      <Name>Exploitation</Name>
+      <Directory>lw-exploitation.directory</Directory>
+      <Include>
+        <Category>X-LW-Exploitation</Category>
+      </Include>
+    </Menu>
+
+    <Menu>
+      <Name>Forensics</Name>
+      <Directory>lw-forensics.directory</Directory>
+      <Include>
+        <Category>X-LW-Forensics</Category>
+      </Include>
+    </Menu>
+
+    <Menu>
+      <Name>Network</Name>
+      <Directory>lw-network.directory</Directory>
+      <Include>
+        <Category>X-LW-Network</Category>
+      </Include>
+    </Menu>
+  </Menu>
+</Menu>

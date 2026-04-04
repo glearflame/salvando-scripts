@@ -1,0 +1,8 @@
+[Desktop Entry]
+Type=Application
+Name=Termshark
+Comment=Terminal-based tshark interface
+Exec=/usr/local/bin/lw-cli-tool "Termshark" "termshark -h"
+Icon=utilities-terminal
+Categories=X-LW-Network;Network;
+Terminal=false

@@ -1,0 +1,8 @@
+[Desktop Entry]
+Type=Application
+Name=Remmina
+Comment=Remote desktop and SSH client
+Exec=remmina
+Icon=remmina
+Categories=X-LW-Network;Network;
+Terminal=false

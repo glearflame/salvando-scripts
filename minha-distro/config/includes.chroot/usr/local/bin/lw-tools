@@ -1,0 +1,121 @@
+#!/bin/sh
+
+set -eu
+
+show_menu() {
+    cat <<'EOF'
+LW Toolbox
+1. Recon
+2. Exploit
+3. Wireless
+4. Network
+5. System
+0. Exit
+EOF
+}
+
+show_recon() {
+    cat <<'EOF'
+Recon
+1. Local network scan
+2. Nmap help
+3. DIRB help
+4. Whois help
+0. Back
+EOF
+}
+
+show_exploit() {
+    cat <<'EOF'
+Exploit
+1. SQLMap help
+2. Hydra help
+3. Nikto help
+0. Back
+EOF
+}
+
+show_wireless() {
+    cat <<'EOF'
+Wireless
+1. Aircrack-ng help
+2. Reaver help
+3. Wi-Fi hardware detect
+0. Back
+EOF
+}
+
+show_network() {
+    cat <<'EOF'
+Network
+1. Wireshark
+2. Termshark help
+3. Remmina
+0. Back
+EOF
+}
+
+while :; do
+    show_menu
+    printf 'Choice: '
+    read -r choice
+    case "$choice" in
+        1)
+            while :; do
+                show_recon
+                printf 'Choice: '
+                read -r sub
+                case "$sub" in
+                    1) /usr/local/bin/lw-scan-network ;;
+                    2) /usr/local/bin/lw-cli-tool "Nmap" "nmap --help"; break ;;
+                    3) /usr/local/bin/lw-cli-tool "DIRB" "dirb"; break ;;
+                    4) /usr/local/bin/lw-cli-tool "Whois" "whois"; break ;;
+                    0) break ;;
+                esac
+            done
+            ;;
+        2)
+            while :; do
+                show_exploit
+                printf 'Choice: '
+                read -r sub
+                case "$sub" in
+                    1) /usr/local/bin/lw-cli-tool "SQLMap" "sqlmap -h"; break ;;
+                    2) /usr/local/bin/lw-cli-tool "Hydra" "hydra"; break ;;
+                    3) /usr/local/bin/lw-cli-tool "Nikto" "nikto -Help"; break ;;
+                    0) break ;;
+                esac
+            done
+            ;;
+        3)
+            while :; do
+                show_wireless
+                printf 'Choice: '
+                read -r sub
+                case "$sub" in
+                    1) /usr/local/bin/lw-cli-tool "Aircrack-ng" "aircrack-ng --help"; break ;;
+                    2) /usr/local/bin/lw-cli-tool "Reaver" "reaver -h"; break ;;
+                    3) /usr/local/bin/lw-cli-tool "Hardware Detect" "sudo lw hardware --install"; break ;;
+                    0) break ;;
+                esac
+            done
+            ;;
+        4)
+            while :; do
+                show_network
+                printf 'Choice: '
+                read -r sub
+                case "$sub" in
+                    1) wireshark >/dev/null 2>&1 & break ;;
+                    2) /usr/local/bin/lw-cli-tool "Termshark" "termshark -h"; break ;;
+                    3) remmina >/dev/null 2>&1 & break ;;
+                    0) break ;;
+                esac
+            done
+            ;;
+        5)
+            /usr/local/bin/lw-cli-tool "LW System" "lw info; printf '\\n'; lw hardware; printf '\\n'; lw performance status"
+            ;;
+        0) exit 0 ;;
+    esac
+done

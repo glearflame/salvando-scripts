@@ -1,0 +1,32 @@
+LW HACKING OS
+==============
+
+Primeiros passos:
+
+1. Conecte na internet pelo icone de rede.
+2. Use "Instalar LW Hacking OS" se quiser instalar no disco.
+3. Abra a Loja, o Firefox ou rode "lw postinstall" para instalar extras como o Steam.
+4. Para jogos, prefira ativar GameMode e MangoHud quando necessario.
+5. Use o Gnome Disks para discos, GParted para particoes e Gufw para firewall.
+6. Use o comando "lw" no terminal para ver informacoes, aplicar tema ou rodar o pos-instalacao.
+
+Apps uteis ja incluidos:
+- Firefox ESR, Chromium e Thunderbird
+- Lutris, Wine, Protontricks, MangoHud, GameMode e Gamescope
+- Steam disponivel via "lw postinstall" com Flatpak
+- LibreOffice, GIMP, Inkscape, VLC, OBS Studio e Kdenlive
+- Docker, Podman, QEMU, Virt Manager e ferramentas de desenvolvimento
+
+Atalhos e dicas:
+- Terminal padrao: XFCE Terminal
+- Editor rapido: Mousepad
+- Firewall grafico: Gufw
+- Scanner: Simple Scan
+- Impressoras: system-config-printer
+- Comando da distro: lw
+- Atualizar o sistema: use o alias "update" no terminal
+- Reiniciar a rede: use o alias "fixnet" no terminal
+
+Dual boot:
+- Se voce ainda tiver Windows, sempre confira o disco/particoes antes de instalar.
+- Se puder, deixe espaco livre antes da instalacao para facilitar o processo.

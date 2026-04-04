@@ -1,0 +1,55 @@
+#!/bin/sh
+
+set -eu
+
+mode="${1:-local}"
+services=0
+
+if [ "$mode" = "--services" ]; then
+    services=1
+    shift
+fi
+
+target="${1:-}"
+
+is_private_cidr() {
+    case "$1" in
+        10.*|192.168.*|172.1[6-9].*|172.2[0-9].*|172.3[0-1].*|127.*) return 0 ;;
+        *) return 1 ;;
+    esac
+}
+
+if [ -z "$target" ]; then
+    iface="$(ip route show default 2>/dev/null | awk '/default/ {print $5; exit}')"
+    target="$(ip -o -4 addr show dev "$iface" 2>/dev/null | awk '{print $4; exit}')"
+fi
+
+base_ip="${target%%/*}"
+is_private_cidr "$base_ip" || {
+    printf 'lw-scan-network only scans the local/private network.\n' >&2
+    exit 1
+}
+
+out_dir="${HOME}/Hacking/Recon"
+mkdir -p "$out_dir"
+stamp="$(date '+%Y%m%d-%H%M%S')"
+out_file="${out_dir}/network-scan-${stamp}.txt"
+hosts_file="${out_dir}/network-hosts-${stamp}.txt"
+
+{
+    printf 'LW network scan\n'
+    printf 'Target: %s\n' "$target"
+    printf 'Time: %s\n\n' "$(date)"
+    nmap -sn -oG - "$target" | tee "$hosts_file"
+    if [ "$services" -eq 1 ]; then
+        hosts="$(awk '/Up$/{print $2}' "$hosts_file" | paste -sd' ' -)"
+        printf '\nBasic service enumeration\n'
+        if [ -n "$hosts" ]; then
+            nmap -sV --version-light --top-ports 20 $hosts
+        else
+            printf 'No live hosts detected for service scan.\n'
+        fi
+    fi
+} | tee "$out_file"
+
+printf '\nSaved report to %s\n' "$out_file"

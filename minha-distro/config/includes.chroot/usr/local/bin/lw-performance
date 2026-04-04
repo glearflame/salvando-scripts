@@ -1,0 +1,65 @@
+#!/bin/sh
+
+set -eu
+
+action="${1:-status}"
+services="bluetooth cups avahi-daemon ModemManager"
+
+need_root() {
+    if [ "$(id -u)" -ne 0 ]; then
+        exec sudo "$0" "$@"
+    fi
+}
+
+set_governor() {
+    gov="$1"
+    if command -v cpupower >/dev/null 2>&1; then
+        cpupower frequency-set -g "$gov" >/dev/null 2>&1 || true
+    elif command -v cpufreq-set >/dev/null 2>&1; then
+        cpufreq-set -r -g "$gov" >/dev/null 2>&1 || true
+    fi
+}
+
+set_profile() {
+    profile="$1"
+    if command -v powerprofilesctl >/dev/null 2>&1; then
+        powerprofilesctl set "$profile" >/dev/null 2>&1 || true
+    fi
+}
+
+case "$action" in
+    on|enable)
+        need_root "$@"
+        set_profile performance
+        set_governor performance
+        systemctl start gamemoded.service >/dev/null 2>&1 || true
+        for service in $services; do
+            systemctl stop "${service}.service" >/dev/null 2>&1 || true
+        done
+        printf 'LW performance mode enabled\n'
+        ;;
+    off|disable)
+        need_root "$@"
+        set_profile balanced
+        set_governor schedutil
+        for service in $services; do
+            systemctl start "${service}.service" >/dev/null 2>&1 || true
+        done
+        printf 'LW performance mode disabled\n'
+        ;;
+    status)
+        printf 'Performance profile: '
+        if command -v powerprofilesctl >/dev/null 2>&1; then
+            powerprofilesctl get 2>/dev/null || printf 'unknown\n'
+        else
+            printf 'powerprofilesctl unavailable\n'
+        fi
+        ;;
+    help|-h|--help)
+        printf 'Usage: lw-performance [on|off|status]\n'
+        ;;
+    *)
+        printf 'Unknown action: %s\n' "$action" >&2
+        exit 1
+        ;;
+esac

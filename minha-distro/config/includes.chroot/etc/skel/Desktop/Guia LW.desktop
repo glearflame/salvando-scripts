@@ -1,0 +1,8 @@
+[Desktop Entry]
+Type=Application
+Name=Guia LW
+Comment=Abrir o guia rapido do sistema
+Exec=/usr/local/bin/lw-open-guide
+Icon=help-browser
+Terminal=false
+StartupNotify=true

@@ -1,0 +1,8 @@
+[Desktop Entry]
+Type=Application
+Name=Instalar LW Hacking OS
+Comment=Abrir o instalador grafico
+Exec=/usr/local/bin/lw-open-installer
+Icon=calamares
+Terminal=false
+StartupNotify=true
